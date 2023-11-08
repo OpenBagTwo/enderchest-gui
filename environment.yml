@@ -1,0 +1,19 @@
+# note: this is just the suggested development environment
+name: enderchest-gui
+channels:
+- conda-forge
+dependencies:
+- python=3.12
+- PyGObject
+- rsync
+- ipython
+- black
+- isort
+- mypy
+- pylint
+- versioneer
+- pip>=23
+- pre-commit
+- pip:
+  - gsb[test]>=0.0.3
+  - enderchest[sftp,test]>=0.1.4b1

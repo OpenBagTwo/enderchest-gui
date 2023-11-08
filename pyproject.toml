@@ -1,0 +1,29 @@
+[tool.versioneer]
+VCS = "git"
+style = "pep440"
+versionfile_source = "common/_version.py"
+versionfile_build = "common/_version.py"
+tag_prefix = "v"
+parentdir_prefix = "enderchest-gui-"
+
+[tool.mypy]
+ignore_missing_imports = true
+show_error_codes = true
+
+[tool.isort]
+line_length = 88
+profile = "black"
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = "E203"
+
+[tool.pylint.main]
+ignore-patterns=["_version.py", "test_(.*).py", "conftest.py"]
+
+[tool.pylint."MESSAGES CONTROL"]
+enable = '''logging-not-lazy
+    '''
+
+disable = '''logging-fstring-interpolation
+    '''
