@@ -12,7 +12,7 @@ OPTIONAL_PY_DEPENDENCIES = (
     "pytest",
 )
 
-LOGGER = logging.getLogger()
+LOGGER = logging.getLogger(__name__)
 
 
 def get_dependency_versions() -> dict[str, str]:
