@@ -148,9 +148,23 @@ class Config:
         as_dict: _ConfigDict = tomllib.loads(config_file.read_text())
         config = cls()
         for minecraft_root in as_dict["ender_chests"]:
-            config.register_enderchest(Path(minecraft_root))
+            try:
+                config.register_enderchest(Path(minecraft_root))
+            except (ValueError, OSError) as load_error:
+                LOGGER.error(
+                    "Failed to load chest from %s\n%s",
+                    minecraft_root,
+                    load_error,
+                )
         for manifest_path in as_dict["saves"]:
-            config.register_save(Path(manifest_path))
+            try:
+                config.register_save(Path(manifest_path))
+            except (ValueError, OSError) as load_error:
+                LOGGER.error(
+                    "Failed to load GSB manifest from %s\n%s",
+                    manifest_path,
+                    load_error,
+                )
         return config
 
 
